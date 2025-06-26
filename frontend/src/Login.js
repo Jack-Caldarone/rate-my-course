@@ -4,8 +4,10 @@ import Button from '@mui/material/Button';
 import './styles.css'
 import ReCAPTCHA from "react-google-recaptcha";
 
+
 var loginSuccess = false;
 var signUpSuccess = true;
+const captchaKey = process.env.CAPTCHA_KEY;
 
 export default function Login() {
     const [initUsername, setUsername] = useState('');
@@ -116,7 +118,7 @@ export default function Login() {
                 <Button variant="contained" onClick={clickLogin}>Login</Button> <br/>
                 <Button variant="contained" onClick={clickSignup}>Sign Up</Button> <br/>
                 <p className='logout-text'>Already logged in? Click <input type='submit' value="here" onClick={clickLogout}/> to logout</p>
-                <ReCAPTCHA align="center" sitekey="6Lfijd0pAAAAAKQF-TCLDyYVYhZ8OvxeqnWb96y6" onChange={captchaChange}/>
+                <ReCAPTCHA align="center" sitekey={captchaKey} onChange={captchaChange}/>
             </form>
         </div>
     )
